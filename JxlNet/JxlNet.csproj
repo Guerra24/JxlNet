@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net6.0;net8.0</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <LangVersion>13.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <Title>JxlNet</Title>
+    <Version>0.11.1.0</Version>
+    <Authors>Guerra24</Authors>
+    <Description>Native bindings for libjxl</Description>
+    <PackageId>JxlNet</PackageId>
+    <PackageProjectUrl>https://github.com/Guerra24/JxlNet</PackageProjectUrl>
+    <PackageTags>jpegxl;jxl;decoder;encoder</PackageTags>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/Guerra24/JxlNet</RepositoryUrl>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Deterministic>true</Deterministic>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="runtimes/win-x64/native/brotlicommon.dll" Pack="true" PackagePath="runtimes/win-x64/native/" />
+    <None Include="runtimes/win-x64/native/brotlidec.dll" Pack="true" PackagePath="runtimes/win-x64/native/" />
+    <None Include="runtimes/win-x64/native/brotlienc.dll" Pack="true" PackagePath="runtimes/win-x64/native/" />
+    <None Include="runtimes/win-x64/native/jxl.dll" Pack="true" PackagePath="runtimes/win-x64/native/" />
+    <None Include="runtimes/win-x64/native/jxl_cms.dll" Pack="true" PackagePath="runtimes/win-x64/native/" />
+    <None Include="runtimes/win-x64/native/jxl_threads.dll" Pack="true" PackagePath="runtimes/win-x64/native/" />
+    <None Include="runtimes/win-arm64/native/brotlicommon.dll" Pack="true" PackagePath="runtimes/win-arm64/native/" />
+    <None Include="runtimes/win-arm64/native/brotlidec.dll" Pack="true" PackagePath="runtimes/win-arm64/native/" />
+    <None Include="runtimes/win-arm64/native/brotlienc.dll" Pack="true" PackagePath="runtimes/win-arm64/native/" />
+    <None Include="runtimes/win-arm64/native/jxl.dll" Pack="true" PackagePath="runtimes/win-arm64/native/" />
+    <None Include="runtimes/win-arm64/native/jxl_cms.dll" Pack="true" PackagePath="runtimes/win-arm64/native/" />
+    <None Include="runtimes/win-arm64/native/jxl_threads.dll" Pack="true" PackagePath="runtimes/win-arm64/native/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.106">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Memory" Version="4.6.0" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,60 @@
+name: Release
+on:
+  release:
+    types: [published]
+jobs:
+  libjxl:
+    name: Build libjxl
+    runs-on: windows-2022
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        arch: [x64-windows, arm64-windows]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        fetch-depth: 2
+    - name: Build libjxl
+      run: |
+        .\BuildLibJxl.ps1 ${{ matrix.arch }} .\libjxl\
+    - name: Upload dlls
+      uses: actions/upload-artifact@v4
+      with:
+        name: libjxl-${{ matrix.arch }}
+        compression-level: 0
+        path: |
+          libjxl/build-${{ matrix.arch }}/lib/Release/*.dll
+          libjxl/build-${{ matrix.arch }}/third_party/brotli/Release/*.dll
+  build:
+    name: NuGet
+    runs-on: windows-2022
+    needs: libjxl
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Prepare Env
+      uses: microsoft/setup-msbuild@v2
+    - name: Download libjxl
+      uses: actions/download-artifact@v4
+      with:
+        path: libjxl-dll
+    - name: Publish nuget
+      run: |
+        Get-ChildItem -Path .\libjxl-dll\libjxl-x64-windows\*.dll -File -Recurse | Move-Item -Destination .\JxlNet\runtimes\win-x64\native
+        Get-ChildItem -Path .\libjxl-dll\libjxl-arm64-windows\*.dll -File -Recurse | Move-Item -Destination .\JxlNet\runtimes\win-arm64\native
+        dotnet pack --configuration Release
+        dotnet nuget add source --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.actor }}/index.json"
+        dotnet nuget push "$(Get-ChildItem JxlNet\bin\Release\*.nupkg)" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
+    - name: Upload nuget
+      uses: actions/upload-artifact@v4
+      with:
+        name: nupkg
+        path: |
+          JxlNet/bin/Release/*.nupkg
+          JxlNet/bin/Release/*.snupkg
