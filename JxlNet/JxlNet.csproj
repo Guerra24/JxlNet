@@ -16,7 +16,6 @@
     <RepositoryUrl>https://github.com/Guerra24/JxlNet</RepositoryUrl>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <Deterministic>true</Deterministic>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
