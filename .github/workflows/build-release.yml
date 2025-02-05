@@ -48,7 +48,7 @@ jobs:
       run: |
         Get-ChildItem -Path .\libjxl-dll\libjxl-x64-windows\*.dll -File -Recurse | Move-Item -Destination .\JxlNet\runtimes\win-x64\native
         Get-ChildItem -Path .\libjxl-dll\libjxl-arm64-windows\*.dll -File -Recurse | Move-Item -Destination .\JxlNet\runtimes\win-arm64\native
-        dotnet pack --configuration Release -p:ContinuousIntegrationBuild=true
+        dotnet pack --configuration Release -p:ContinuousIntegrationBuild=true -p:Deterministic=true
         dotnet nuget add source --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.actor }}/index.json"
         dotnet nuget push "$(Get-ChildItem JxlNet\bin\Release\*.nupkg)" --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
     - name: Upload nuget

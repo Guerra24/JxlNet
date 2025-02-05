@@ -12,7 +12,7 @@ public static unsafe partial class JxlThreads
 
     static unsafe JxlThreads()
     {
-#if NETSTANDARD
+#if NETSTANDARD || WINDOWS10_0_17763_0_OR_GREATER
         FreeLibrarySafeHandle jxl_threads;
         int versionMajor = Environment.OSVersion.Version.Major;
         int versionMinor = Environment.OSVersion.Version.Minor;
