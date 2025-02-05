@@ -1,5 +1,7 @@
 # JxlNet
 
+[![NuGet](https://img.shields.io/nuget/v/JxlNet)](https://www.nuget.org/packages/JxlNet/)
+
 Up-to-date native bindings for libjxl generated with ClangSharp.
 
 ## Getting started
