@@ -21,14 +21,10 @@ public static unsafe partial class JxlThreads
         {
             uint length = 0;
             WIN32_ERROR result;
-            fixed (char* buf = new char[0])
-            {
-                result = PInvoke.GetCurrentPackageFullName(ref length, buf);
-            }
-            fixed (char* buf = new char[length])
-            {
-                result = PInvoke.GetCurrentPackageFullName(ref length, buf);
-            }
+            Span<char> buf = [];
+            result = PInvoke.GetCurrentPackageFullName(ref length, buf);
+            buf = new char[(int)length];
+            result = PInvoke.GetCurrentPackageFullName(ref length, buf);
             if (result != WIN32_ERROR.APPMODEL_ERROR_NO_PACKAGE)
             {
                 jxl_threads = PInvoke.LoadPackagedLibrary("jxl_threads");

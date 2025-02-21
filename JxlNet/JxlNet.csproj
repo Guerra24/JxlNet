@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net6.0;net8.0;net9.0-windows10.0.26100.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net8.0;net9.0-windows10.0.26100.0</TargetFrameworks>
     <Nullable>enable</Nullable>
     <LangVersion>13.0</LangVersion>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">true</IsTrimmable>
     <Title>JxlNet</Title>
-    <Version>0.11.1.1</Version>
+    <Version>0.11.1.2</Version>
     <Authors>Guerra24</Authors>
     <Description>Native bindings for libjxl</Description>
     <PackageId>JxlNet</PackageId>
@@ -39,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.162">
+    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.183">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
