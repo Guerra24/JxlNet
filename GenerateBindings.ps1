@@ -9,7 +9,7 @@ Import-Module (Join-Path $vsPath "Common7\Tools\Microsoft.VisualStudio.DevShell.
 Enter-VsDevShell -VsInstallPath $vsPath -SkipAutomaticLocation
 
 ClangSharpPInvokeGenerator `
--c compatible-codegen generate-file-scoped-namespaces multi-file generate-helper-types `
+-c compatible-codegen generate-file-scoped-namespaces multi-file generate-helper-types exclude-fnptr-codegen `
 -F $include `
 -I $include `
 -f jxl\decode.h `
@@ -27,7 +27,7 @@ ClangSharpPInvokeGenerator `
 -o .\JXLNet\
 
 ClangSharpPInvokeGenerator `
--c compatible-codegen generate-file-scoped-namespaces multi-file generate-helper-types `
+-c compatible-codegen generate-file-scoped-namespaces multi-file generate-helper-types exclude-fnptr-codegen `
 -F $include `
 -I $include `
 -f jxl\parallel_runner.h `
