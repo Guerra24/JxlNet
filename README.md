@@ -14,4 +14,4 @@ A decoder example can be found [here](https://github.com/Guerra24/LRReader/blob/
 
 .NET Standard 2.0 on Windows x64 or ARM64, with additional support for UWP.
 
-.NET 6+ on Windows x64 or ARM64.
+.NET 8+ on Windows x64 or ARM64.
