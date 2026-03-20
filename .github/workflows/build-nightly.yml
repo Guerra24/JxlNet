@@ -6,7 +6,7 @@ on:
 jobs:
   libjxl:
     name: Build libjxl
-    runs-on: windows-2025-vs2026
+    runs-on: windows-2025
     permissions:
       contents: read
     strategy:
@@ -31,7 +31,7 @@ jobs:
           libjxl/build-${{ matrix.arch }}/third_party/brotli/Release/*.dll
   build:
     name: NuGet
-    runs-on: windows-2025-vs2026
+    runs-on: windows-2025
     needs: libjxl
     permissions:
       contents: read
