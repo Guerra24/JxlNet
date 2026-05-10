@@ -5,7 +5,7 @@ on:
 jobs:
   libjxl:
     name: Build libjxl
-    runs-on: windows-2025-vs2026
+    runs-on: windows-2025
     permissions:
       contents: read
     strategy:
@@ -13,7 +13,7 @@ jobs:
         arch: [x64-windows, arm64-windows]
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         submodules: recursive
         fetch-depth: 2
@@ -21,7 +21,7 @@ jobs:
       run: |
         .\BuildLibJxl.ps1 ${{ matrix.arch }} .\libjxl\
     - name: Upload dlls
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: libjxl-${{ matrix.arch }}
         compression-level: 0
@@ -30,7 +30,7 @@ jobs:
           libjxl/build-${{ matrix.arch }}/third_party/brotli/Release/*.dll
   build:
     name: NuGet
-    runs-on: windows-2025-vs2026
+    runs-on: windows-2025
     needs: libjxl
     permissions:
       contents: read
@@ -38,7 +38,7 @@ jobs:
       id-token: write
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Install .NET SDK
       uses: actions/setup-dotnet@v5
       with:
@@ -46,14 +46,14 @@ jobs:
           9.0.x
           10.0.x
     - name: Prepare Env
-      uses: microsoft/setup-msbuild@v2
+      uses: microsoft/setup-msbuild@v3
     - name: Login nuget
       uses: NuGet/login@v1
       id: login
       with:
         user: ${{ github.actor }}
     - name: Download libjxl
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         path: libjxl-dll
     - name: Publish nuget
@@ -65,7 +65,7 @@ jobs:
         dotnet nuget push "$(Get-ChildItem JxlNet\bin\Release\*.nupkg)" -k ${{ secrets.GITHUB_TOKEN }} --source "github"
         dotnet nuget push "$(Get-ChildItem JxlNet\bin\Release\*.nupkg)" -k ${{ steps.login.outputs.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
     - name: Upload nuget
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: nupkg
         path: |
