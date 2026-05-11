@@ -4,7 +4,7 @@ Param(
   [ValidateSet('x64-windows','arm64-windows')]
   [string]$triplet,
   [Parameter(Mandatory=$true, Position=1)]
-  [string]$libjxl
+  [string]$lib
 )
 
 if ($triplet -eq "x64-windows") {
@@ -21,9 +21,9 @@ $vsPath = &"${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.e
 Import-Module (Join-Path $vsPath "Common7\Tools\Microsoft.VisualStudio.DevShell.dll")
 Enter-VsDevShell -VsInstallPath $vsPath -SkipAutomaticLocation -DevCmdArguments "-arch=$($arch.ToLower())"
 
-cd $libjxl
+cd $lib
 cmake `
--B"build-$triplet" `
+-B "build-$triplet" `
 -A $arch `
 -DCMAKE_CXX_FLAGS="/MP /EHsc" `
 -DCMAKE_C_FLAGS="/MP" `
@@ -40,6 +40,6 @@ cmake `
 -DJPEGXL_ENABLE_JNI=OFF `
 -DVCPKG_TARGET_TRIPLET=$triplet
 
-cmake --build "build-$triplet" --config Release
+cmake --build "build-$triplet" --config Release --parallel
 
 cd $currentDirectory

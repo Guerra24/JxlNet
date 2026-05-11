@@ -1,5 +1,3 @@
-using System;
-
 namespace JxlNet;
 
 public partial struct JxlColorProfile
@@ -10,7 +8,7 @@ public partial struct JxlColorProfile
     public JxlColorEncoding color_encoding;
 
     [NativeTypeName("size_t")]
-    public UIntPtr num_channels;
+    public nuint num_channels;
 
     public unsafe partial struct _icc_e__Struct
     {
@@ -18,6 +16,6 @@ public partial struct JxlColorProfile
         public byte* data;
 
         [NativeTypeName("size_t")]
-        public UIntPtr size;
+        public nuint size;
     }
 }

@@ -1,5 +1,3 @@
-using System;
-
 namespace JxlNet;
 
 public partial struct JxlPixelFormat
@@ -12,5 +10,5 @@ public partial struct JxlPixelFormat
     public JxlEndianness endianness;
 
     [NativeTypeName("size_t")]
-    public UIntPtr align;
+    public nuint align;
 }

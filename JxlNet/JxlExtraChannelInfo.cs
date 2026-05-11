@@ -1,6 +1,8 @@
+using System.Runtime.CompilerServices;
+
 namespace JxlNet;
 
-public unsafe partial struct JxlExtraChannelInfo
+public partial struct JxlExtraChannelInfo
 {
     public JxlExtraChannelType type;
 
@@ -19,8 +21,14 @@ public unsafe partial struct JxlExtraChannelInfo
     public int alpha_premultiplied;
 
     [NativeTypeName("float[4]")]
-    public fixed float spot_color[4];
+    public _spot_color_e__FixedBuffer spot_color;
 
     [NativeTypeName("uint32_t")]
     public uint cfa_channel;
+
+    [InlineArray(4)]
+    public partial struct _spot_color_e__FixedBuffer
+    {
+        public float e0;
+    }
 }

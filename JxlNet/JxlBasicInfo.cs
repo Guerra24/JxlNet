@@ -1,6 +1,8 @@
+using System.Runtime.CompilerServices;
+
 namespace JxlNet;
 
-public unsafe partial struct JxlBasicInfo
+public partial struct JxlBasicInfo
 {
     public int have_container;
 
@@ -57,5 +59,11 @@ public unsafe partial struct JxlBasicInfo
     public uint intrinsic_ysize;
 
     [NativeTypeName("uint8_t[100]")]
-    public fixed byte padding[100];
+    public _padding_e__FixedBuffer padding;
+
+    [InlineArray(100)]
+    public partial struct _padding_e__FixedBuffer
+    {
+        public byte e0;
+    }
 }

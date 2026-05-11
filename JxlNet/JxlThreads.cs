@@ -13,7 +13,7 @@ public static unsafe partial class JxlThreads
     public static extern void* JxlResizableParallelRunnerCreate([NativeTypeName("const JxlMemoryManager *")] JxlMemoryManagerStruct* memory_manager);
 
     [DllImport("jxl_threads", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-    public static extern void JxlResizableParallelRunnerSetThreads(void* runner_opaque, [NativeTypeName("size_t")] UIntPtr num_threads);
+    public static extern void JxlResizableParallelRunnerSetThreads(void* runner_opaque, [NativeTypeName("size_t")] nuint num_threads);
 
     [DllImport("jxl_threads", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
     [return: NativeTypeName("uint32_t")]
@@ -27,12 +27,12 @@ public static unsafe partial class JxlThreads
     public static extern int _JxlThreadParallelRunner(void* runner_opaque, void* jpegxl_opaque, [NativeTypeName("JxlParallelRunInit")] IntPtr init, [NativeTypeName("JxlParallelRunFunction")] IntPtr func, [NativeTypeName("uint32_t")] uint start_range, [NativeTypeName("uint32_t")] uint end_range);
 
     [DllImport("jxl_threads", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-    public static extern void* JxlThreadParallelRunnerCreate([NativeTypeName("const JxlMemoryManager *")] JxlMemoryManagerStruct* memory_manager, [NativeTypeName("size_t")] UIntPtr num_worker_threads);
+    public static extern void* JxlThreadParallelRunnerCreate([NativeTypeName("const JxlMemoryManager *")] JxlMemoryManagerStruct* memory_manager, [NativeTypeName("size_t")] nuint num_worker_threads);
 
     [DllImport("jxl_threads", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
     public static extern void JxlThreadParallelRunnerDestroy(void* runner_opaque);
 
     [DllImport("jxl_threads", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
     [return: NativeTypeName("size_t")]
-    public static extern UIntPtr JxlThreadParallelRunnerDefaultNumWorkerThreads();
+    public static extern nuint JxlThreadParallelRunnerDefaultNumWorkerThreads();
 }

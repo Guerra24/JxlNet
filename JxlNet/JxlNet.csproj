@@ -1,13 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net8.0;net9.0-windows10.0.26100.0;net10.0;net10.0-windows10.0.26100.0</TargetFrameworks>
+    <TargetFrameworks>net10.0;net10.0-windows10.0.26100.0</TargetFrameworks>
     <Nullable>enable</Nullable>
-    <LangVersion>13.0</LangVersion>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-    <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">true</IsAotCompatible>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <IsAotCompatible>true</IsAotCompatible>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <Title>JxlNet</Title>
-    <Version>0.11.2.1</Version>
+    <Version>0.11.2.2</Version>
     <Authors>Guerra24</Authors>
     <Description>Native bindings for libjxl</Description>
     <PackageId>JxlNet</PackageId>
@@ -15,7 +17,7 @@
     <PackageTags>jpegxl;jpeg xl;libjxl;jxl;decoder;encoder</PackageTags>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/Guerra24/JxlNet</RepositoryUrl>
-    <IncludeSymbols>True</IncludeSymbols>
+    <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
@@ -37,15 +39,6 @@
     <None Include="runtimes/win-arm64/native/jxl.dll" Pack="true" PackagePath="runtimes/win-arm64/native/" />
     <None Include="runtimes/win-arm64/native/jxl_cms.dll" Pack="true" PackagePath="runtimes/win-arm64/native/" />
     <None Include="runtimes/win-arm64/native/jxl_threads.dll" Pack="true" PackagePath="runtimes/win-arm64/native/" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.275">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="System.Memory" Version="4.6.3" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.2" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
   </ItemGroup>
 
 </Project>
