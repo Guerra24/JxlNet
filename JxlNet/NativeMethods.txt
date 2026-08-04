@@ -1,4 +1,0 @@
-﻿LoadPackagedLibrary
-LoadLibrary
-GetProcAddress
-GetCurrentPackageFullName
