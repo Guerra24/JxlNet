@@ -44,7 +44,7 @@ jobs:
       with:
         dotnet-version: 10.0.x
     - name: Prepare Env
-      uses: microsoft/setup-msbuild@v2
+      uses: microsoft/setup-msbuild@v3
     - name: Download libjxl
       uses: actions/download-artifact@v8
       with:
