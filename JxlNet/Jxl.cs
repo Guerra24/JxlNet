@@ -316,10 +316,6 @@ public static unsafe partial class Jxl
     public static extern void JxlEncoderCollectStats(JxlEncoderFrameSettings* frame_settings, JxlEncoderStats* stats);
 
     [DllImport("jxl", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-    [return: NativeTypeName("const JxlCmsInterface *")]
-    public static extern JxlCmsInterface* JxlGetDefaultCms();
-
-    [DllImport("jxl", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
     public static extern JxlEncoderStats* JxlEncoderStatsCreate();
 
     [DllImport("jxl", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]

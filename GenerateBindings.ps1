@@ -17,13 +17,21 @@ ClangSharpPInvokeGenerator `
 -f jxl\memory_manager.h `
 -f jxl\types.h `
 -f jxl\codestream_header.h `
--f jxl\cms.h `
--f jxl\cms_interface.h `
 -f jxl\color_encoding.h `
 -f jxl\stats.h `
 -n JxlNet `
 -m Jxl `
 -l jxl `
+-o .\JXLNet\
+
+ClangSharpPInvokeGenerator `
+-c latest-codegen generate-file-scoped-namespaces multi-file generate-helper-types exclude-fnptr-codegen `
+-F $include `
+-I $include `
+-f jxl\cms.h `
+-n JxlNet `
+-m JxlCms `
+-l jxl_cms `
 -o .\JXLNet\
 
 ClangSharpPInvokeGenerator `
