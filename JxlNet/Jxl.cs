@@ -327,4 +327,13 @@ public static unsafe partial class Jxl
 
     [DllImport("jxl", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
     public static extern void JxlEncoderStatsMerge(JxlEncoderStats* stats, [NativeTypeName("const JxlEncoderStats *")] JxlEncoderStats* other);
+
+    [DllImport("jxl", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+    public static extern int JxlGainMapGetBundleSize([NativeTypeName("const JxlGainMapBundle *")] JxlGainMapBundle* map_bundle, [NativeTypeName("size_t *")] nuint* bundle_size);
+
+    [DllImport("jxl", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+    public static extern int JxlGainMapWriteBundle([NativeTypeName("const JxlGainMapBundle *")] JxlGainMapBundle* map_bundle, [NativeTypeName("uint8_t *")] byte* output_buffer, [NativeTypeName("size_t")] nuint output_buffer_size, [NativeTypeName("size_t *")] nuint* bytes_written);
+
+    [DllImport("jxl", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+    public static extern int JxlGainMapReadBundle(JxlGainMapBundle* map_bundle, [NativeTypeName("const uint8_t *")] byte* input_buffer, [NativeTypeName("size_t")] nuint input_buffer_size, [NativeTypeName("size_t *")] nuint* bytes_read);
 }

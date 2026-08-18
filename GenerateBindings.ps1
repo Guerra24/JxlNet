@@ -19,6 +19,7 @@ ClangSharpPInvokeGenerator `
 -f jxl\codestream_header.h `
 -f jxl\color_encoding.h `
 -f jxl\stats.h `
+-f jxl\gain_map.h `
 -n JxlNet `
 -m Jxl `
 -l jxl `
