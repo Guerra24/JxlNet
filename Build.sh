@@ -4,10 +4,10 @@ set -e
 
 export SYSROOT="/opt/sysroot"
 
-cd $1
+cd $2
 
 cmake \
--B "build-$2" \
+-B "build-$1" \
 -DCMAKE_C_COMPILER="clang" \
 -DCMAKE_CXX_COMPILER="clang++" \
 -DCMAKE_LINKER_TYPE="LLD" \
@@ -29,6 +29,6 @@ cmake \
 -DJPEGXL_ENABLE_DEVTOOLS=OFF \
 -DJPEGXL_ENABLE_JNI=OFF
 
-cmake --build "build-$2" --config Release --parallel $(nproc)
+cmake --build "build-$1" --config Release --parallel $(nproc)
 
 cd ..
