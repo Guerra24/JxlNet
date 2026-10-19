@@ -16,6 +16,7 @@ runs:
     - name: Build Docker image
       uses: docker/build-push-action@v7
       with:
+        context: .
         file: Util/Dockerfile
         outputs: type=local,dest=/opt/sysroot
         cache-from: type=gha,scope=sysroot-${{ inputs.platform }}
