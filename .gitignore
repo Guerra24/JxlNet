@@ -340,4 +340,5 @@ ASALocalRun/
 healthchecksdb
 
 JxlNet/runtimes/**/*.dll
+JxlNet/runtimes/**/*.so
 libjxl-dll/
