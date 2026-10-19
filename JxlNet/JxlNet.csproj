@@ -39,6 +39,18 @@
     <None Include="runtimes/win-arm64/native/jxl.dll" Pack="true" PackagePath="runtimes/win-arm64/native/" />
     <None Include="runtimes/win-arm64/native/jxl_cms.dll" Pack="true" PackagePath="runtimes/win-arm64/native/" />
     <None Include="runtimes/win-arm64/native/jxl_threads.dll" Pack="true" PackagePath="runtimes/win-arm64/native/" />
+    <None Include="runtimes/linux-x64/native/libbrotlicommon.so" Pack="true" PackagePath="runtimes/linux-x64/native/" />
+    <None Include="runtimes/linux-x64/native/libbrotlidec.so" Pack="true" PackagePath="runtimes/linux-x64/native/" />
+    <None Include="runtimes/linux-x64/native/libbrotlienc.so" Pack="true" PackagePath="runtimes/linux-x64/native/" />
+    <None Include="runtimes/linux-x64/native/libjxl.so" Pack="true" PackagePath="runtimes/linux-x64/native/" />
+    <None Include="runtimes/linux-x64/native/libjxl_cms.so" Pack="true" PackagePath="runtimes/linux-x64/native/" />
+    <None Include="runtimes/linux-x64/native/libjxl_threads.so" Pack="true" PackagePath="runtimes/linux-x64/native/" />
+    <None Include="runtimes/linux-arm64/native/libbrotlicommon.so" Pack="true" PackagePath="runtimes/linux-arm64/native/" />
+    <None Include="runtimes/linux-arm64/native/libbrotlidec.so" Pack="true" PackagePath="runtimes/linux-arm64/native/" />
+    <None Include="runtimes/linux-arm64/native/libbrotlienc.so" Pack="true" PackagePath="runtimes/linux-arm64/native/" />
+    <None Include="runtimes/linux-arm64/native/libjxl.so" Pack="true" PackagePath="runtimes/linux-arm64/native/" />
+    <None Include="runtimes/linux-arm64/native/libjxl_cms.so" Pack="true" PackagePath="runtimes/linux-arm64/native/" />
+    <None Include="runtimes/linux-arm64/native/libjxl_threads.so" Pack="true" PackagePath="runtimes/linux-arm64/native/" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,26 @@
+name: 'Create SysRoot'
+description: ''
+inputs:
+  platform:
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Prepare
+      shell: bash
+      run: |
+        sudo mkdir -p /opt/sysroot
+        sudo chown -R $(whoami):$(whoami) /opt/sysroot
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v4
+    - name: Build Docker image
+      uses: docker/build-push-action@v7
+      with:
+        file: Util/Dockerfile
+        outputs: type=local,dest=/opt/sysroot
+        cache-from: type=gha,scope=sysroot-${{ inputs.platform }}
+        cache-to: type=gha,mode=max,scope=sysroot-${{ inputs.platform }}
+    - name: Relink
+      shell: bash
+      run: |
+        ./Util/Relink.sh /opt/sysroot
