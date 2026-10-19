@@ -60,8 +60,8 @@ jobs:
         name: libjxl-${{ matrix.variant.platform }}
         compression-level: 0
         path: |
-          libjxl/build-${{ matrix.variant.platform }}/lib/Release/*.so
-          libjxl/build-${{ matrix.variant.platform }}/third_party/brotli/Release/*.so
+          libjxl/build-${{ matrix.variant.platform }}/lib/*.so
+          libjxl/build-${{ matrix.variant.platform }}/third_party/brotli/*.so
   build:
     name: NuGet
     runs-on: windows-2025
